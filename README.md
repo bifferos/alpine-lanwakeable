@@ -1,2 +1,2 @@
 # alpine-lanwakeable
-First attempt at alpine package
+Run ethtool on interfaces to ensure they response to magic packets.
