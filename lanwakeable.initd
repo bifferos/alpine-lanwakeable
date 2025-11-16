@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+
+description="Enable Wake-on-LAN on ethernet interfaces"
+
+depend() {
+    need localmount
+}
+
+start() {
+    ebegin "Setting up Wake-on-LAN"
+    /usr/bin/lanwakeable.sh
+    eend $?
+}

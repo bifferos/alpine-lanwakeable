@@ -1,0 +1,28 @@
+name: Build APK
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Alpine chroot
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y alpine-chroot-install
+          sudo alpine-chroot-install --default
+      - name: Build APK
+        run: |
+          sudo chroot /alpine /bin/sh -c "
+            apk add abuild ethtool
+            adduser -D builder
+            echo 'builder ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+            su builder -c '
+              cd /github/workspace
+              abuild -r
+            '
+          "
