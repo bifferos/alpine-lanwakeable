@@ -21,19 +21,20 @@ jobs:
         run: |
           # Ensure abuild config dir exists
           mkdir -p /home/builder/.abuild
-
           # Write the private key from secret
-          echo "${{ secrets.ALPINE_SIGNING_KEY }}" > /home/builder/.abuild/my-alpine-packager.key
-
+          echo "${{ secrets.ALPINE_SIGNING_KEY }}" > /home/builder/.abuild/bifferos.key
           # Restrict permissions
-          chown builder:builder /home/builder/.abuild/my-alpine-packager.key
-          chmod 600 /home/builder/.abuild/my-alpine-packager.key
-
+          chown builder:builder /home/builder/.abuild/bifferos.key
+          chmod 600 /home/builder/.abuild/bifferos.key
           # Write minimal abuild.conf for packager key
-          echo 'PACKAGER_PRIVKEY="/home/builder/.abuild/my-alpine-packager.key"' > /home/builder/.abuild/abuild.conf
+          echo 'PACKAGER_PRIVKEY="/home/builder/.abuild/bifferos.key"' > /home/builder/.abuild/abuild.conf
           chown builder:builder /home/builder/.abuild/abuild.conf
           chmod 644 /home/builder/.abuild/abuild.conf
- 
+      - name: Prepare abuild public key for CI
+        run: |
+          cp .abuild/bifferos.key.pub /home/builder/.abuild/
+          chown builder:builder /home/builder/.abuild/bifferos.key.pub
+          chmod 644 /home/builder/.abuild/bifferos.key.pub
       - name: Build APK
         run: |
           su builder -c '
