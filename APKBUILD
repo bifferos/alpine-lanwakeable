@@ -1,4 +1,4 @@
-# Maintainer: 598590+bifferos@users.noreply.github.com
+# Maintainer: bifferos@users.noreply.github.com
 pkgname=lanwakeable
 pkgver=1.0
 pkgrel=0
