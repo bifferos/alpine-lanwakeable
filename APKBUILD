@@ -1,4 +1,4 @@
-# Maintainer: bifferos@users.noreply.github.com
+# Maintainer: Biff Eros <bifferos@users.noreply.github.com>
 pkgname=lanwakeable
 pkgver=1.0
 pkgrel=0
