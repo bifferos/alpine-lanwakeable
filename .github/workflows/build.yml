@@ -18,6 +18,8 @@ jobs:
           adduser -D builder
           addgroup builder abuild
           echo 'builder ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+      - name: Set ownership for builder
+        run: chown -R builder:builder $GITHUB_WORKSPACE
       - name: Prepare abuild signing key for CI
         run: |
           # Ensure abuild config dir exists
