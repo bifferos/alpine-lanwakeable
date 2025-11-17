@@ -36,6 +36,8 @@ jobs:
       - name: Prepare abuild public key for CI
         run: |
           cp .abuild/bifferos.key.pub /home/builder/.abuild/
+          cp .abuild/bifferos.key.pub /etc/apk/keys/
+          chmod 644 /etc/apk/keys/bifferos.key.pub
           chown builder:builder /home/builder/.abuild/bifferos.key.pub
           chmod 644 /home/builder/.abuild/bifferos.key.pub
       - name: Build APK
