@@ -20,9 +20,9 @@ chown biff:biff /home/biff/.abuild/abuild.conf
 chmod 644 /home/biff/.abuild/abuild.conf
 
 echo "Getting public key from sources"
-cp .abuild/signing.key.pub /home/biff/.abuild/
+cp .abuild/bifferos.key.pub /home/biff/.abuild/
 echo "Trusting public key on build machine"
-cp .abuild/signing.key.pub /etc/apk/keys/
+cp .abuild/bifferos.key.pub /etc/apk/keys/
 chmod 644 /etc/apk/keys/signing.key.pub
 
 chown biff:biff /home/biff/.abuild/signing.key.pub
