@@ -4,7 +4,7 @@ pkgver=1.0
 pkgrel=0
 pkgdesc="Enable Wake-on-LAN on boot using ethtool"
 url="https://github.com/bifferos/alpine-lanwakeable"
-arch="all"
+arch="noarch"
 license="MIT"
 depends="ethtool"
 install=""
@@ -18,6 +18,7 @@ package() {
 
 
 check() {
+    return 0
 }
 
 
