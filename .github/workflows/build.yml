@@ -19,10 +19,7 @@ jobs:
           ./prepare.sh
       - name: Build APK
         run: |
-          su biff -c '
-            cd $GITHUB_WORKSPACE
-            abuild -r
-          '
+          ./build.sh
       - name: Upload APK artifact      
         uses: actions/upload-artifact@v4
         with:
